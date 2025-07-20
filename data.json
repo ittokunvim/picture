@@ -1168,6 +1168,857 @@
 		"bonus": "BB",
 		"flag": "C2",
 		"album": "discup-ur"
+	},
+	{
+		"path": "hyper-rush/20250720_001.jpeg",
+		"bonus": "HB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_002.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_003.jpeg",
+		"bonus": "HB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_004.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_005.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_006.jpeg",
+		"bonus": "CB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_007.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_008.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_009.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_010.jpeg",
+		"bonus": "CB",
+		"flag": "O",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_011.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_012.jpeg",
+		"bonus": "RB",
+		"flag": "T",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_013.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_014.jpeg",
+		"bonus": "HB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_015.jpeg",
+		"bonus": "HB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_016.jpeg",
+		"bonus": "HB",
+		"flag": "P",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_017.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_018.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_019.jpeg",
+		"bonus": "HB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_020.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_021.jpeg",
+		"bonus": "RB",
+		"flag": "V",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_022.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_023.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_024.jpeg",
+		"bonus": "HB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_025.jpeg",
+		"bonus": "HB",
+		"flag": "P",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_026.jpeg",
+		"bonus": "HB",
+		"flag": "M",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_027.jpeg",
+		"bonus": "CB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_028.jpeg",
+		"bonus": "RB",
+		"flag": "V",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_029.jpeg",
+		"bonus": "CB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_030.jpeg",
+		"bonus": "HB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_031.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_032.jpeg",
+		"bonus": "HB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_033.jpeg",
+		"bonus": "CB",
+		"flag": "P",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_034.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_035.jpeg",
+		"bonus": "HB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_036.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_037.jpeg",
+		"bonus": "HB",
+		"flag": "K",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_038.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_039.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_040.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_041.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_042.jpeg",
+		"bonus": "RB",
+		"flag": "V",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_043.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_044.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_045.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_046.jpeg",
+		"bonus": "CB",
+		"flag": "D",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_047.jpeg",
+		"bonus": "CB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_048.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_049.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_050.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_051.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_052.jpeg",
+		"bonus": "CB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_053.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_054.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_055.jpeg",
+		"bonus": "RB",
+		"flag": "R",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_056.jpeg",
+		"bonus": "CB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_057.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_058.jpeg",
+		"bonus": "HB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_059.jpeg",
+		"bonus": "HB",
+		"flag": "I",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_060.jpeg",
+		"bonus": "RB",
+		"flag": "T",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_061.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_062.jpeg",
+		"bonus": "CB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_063.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_064.jpeg",
+		"bonus": "CB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_065.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_066.jpeg",
+		"bonus": "HB",
+		"flag": "F",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_067.jpeg",
+		"bonus": "RB",
+		"flag": "T",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_068.jpeg",
+		"bonus": "HB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_069.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_070.jpeg",
+		"bonus": "HB",
+		"flag": "B",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_071.jpeg",
+		"bonus": "HB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_072.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_073.jpeg",
+		"bonus": "CB",
+		"flag": "F",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_074.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_075.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_076.jpeg",
+		"bonus": "CB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_077.jpeg",
+		"bonus": "HB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_078.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_079.jpeg",
+		"bonus": "CB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_080.jpeg",
+		"bonus": "HB",
+		"flag": "I",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_081.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_082.jpeg",
+		"bonus": "CB",
+		"flag": "P",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_083.jpeg",
+		"bonus": "RB",
+		"flag": "V",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_084.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_085.jpeg",
+		"bonus": "CB",
+		"flag": "P",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_086.jpeg",
+		"bonus": "HB",
+		"flag": "F",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_087.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_088.jpeg",
+		"bonus": "RB",
+		"flag": "V",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_089.jpeg",
+		"bonus": "HB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_090.jpeg",
+		"bonus": "CB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_091.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_092.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_093.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_094.jpeg",
+		"bonus": "HB",
+		"flag": "Q",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_095.jpeg",
+		"bonus": "HB",
+		"flag": "L",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_097.jpeg",
+		"bonus": "CB",
+		"flag": "D",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_098.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_099.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_100.jpeg",
+		"bonus": "CB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_101.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_102.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_104.jpeg",
+		"bonus": "HB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_105.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_106.jpeg",
+		"bonus": "CB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_107.jpeg",
+		"bonus": "HB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_108.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_109.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_110.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_111.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_112.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_113.jpeg",
+		"bonus": "HB",
+		"flag": "D",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_114.jpeg",
+		"bonus": "HB",
+		"flag": "C",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_115.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_116.jpeg",
+		"bonus": "CB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_117.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_118.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_119.jpeg",
+		"bonus": "CB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_120.jpeg",
+		"bonus": "HB",
+		"flag": "J",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_121.jpeg",
+		"bonus": "RB",
+		"flag": "T",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_122.jpeg",
+		"bonus": "CB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_124.jpeg",
+		"bonus": "HB",
+		"flag": "G",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_125.jpeg",
+		"bonus": "CB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_126.jpeg",
+		"bonus": "RB",
+		"flag": "R",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_127.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_128.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_129.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_130.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_131.jpeg",
+		"bonus": "CB",
+		"flag": "M",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_132.jpeg",
+		"bonus": "CB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_133.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_134.jpeg",
+		"bonus": "HB",
+		"flag": "E",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_135.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_136.jpeg",
+		"bonus": "HB",
+		"flag": "O",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_137.jpeg",
+		"bonus": "HB",
+		"flag": "A",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_138.jpeg",
+		"bonus": "HB",
+		"flag": "D",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_139.jpeg",
+		"bonus": "RB",
+		"flag": "U",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_140.jpeg",
+		"bonus": "HB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_141.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_142.jpeg",
+		"bonus": "RB",
+		"flag": "W",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_144.jpeg",
+		"bonus": "HB",
+		"flag": "H",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_145.jpeg",
+		"bonus": "CB",
+		"flag": "F",
+		"album": "hyper-rush"
+	},
+	{
+		"path": "hyper-rush/20250720_146.jpeg",
+		"bonus": "CB",
+		"flag": "L",
+		"album": "hyper-rush"
 	}
 ]
-

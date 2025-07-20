@@ -89,3 +89,4 @@ fi
 
 jq --argjson add "${json}" '. += [$add]' ${WRITEFILE} > tmp.json
 mv tmp.json ${WRITEFILE}
+
