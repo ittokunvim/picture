@@ -11,6 +11,7 @@ const PictureTitle = "写真一覧";
 //  "album": "string",
 // }
 
+// JSONファイルを読み取り、データを出力する関数
 async function fetchJson() {
 	try {
 		const response = await fetch(JsonPath, { cache: "no-store" });
@@ -21,6 +22,11 @@ async function fetchJson() {
 	}
 }
 
+// 写真のリストを生成する関数
+// <div>
+//   <h2>...</h2>
+//   ...
+// </div>
 async function createPictureList() {
 	const jsonData = await fetchJson();
 	const myTitle = document.createElement("h2");
@@ -39,6 +45,18 @@ async function createPictureList() {
 	picture.appendChild(discupURAlbum);
 }
 
+// 画像のアルバムを生成する関数
+// <div class="area">
+//   <div class="list">
+//     <div class="item">
+//       <div class="image">
+//         <img />
+//       </div>
+//       <div class="bonus">...</div>
+//       <div class="flag">...</div>
+//     </div>
+//   </div>
+// </div>
 function createAlbum(title, data) {
 	const myArea = document.createElement("div");
 	const myTitle = document.createElement("h3");
