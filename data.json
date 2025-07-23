@@ -2020,5 +2020,341 @@
 		"bonus": "CB",
 		"flag": "L",
 		"album": "hyper-rush"
+	},
+	{
+		"path": "discup-ur/20250724_001.jpeg",
+		"bonus": "RB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_002.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_004.jpeg",
+		"bonus": "RB",
+		"flag": "B3",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_005.jpeg",
+		"bonus": "RB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_006.jpeg",
+		"bonus": "BB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_007.jpeg",
+		"bonus": "BB",
+		"flag": "G1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_008.jpeg",
+		"bonus": "BB",
+		"flag": "A2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_010.jpeg",
+		"bonus": "BB",
+		"flag": "A2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_012.jpeg",
+		"bonus": "BB",
+		"flag": "C3",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_013.jpeg",
+		"bonus": "BB",
+		"flag": "E1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_014.jpeg",
+		"bonus": "BB",
+		"flag": "T1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_015.jpeg",
+		"bonus": "BB",
+		"flag": "A",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_018.jpeg",
+		"bonus": "BB",
+		"flag": "A1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_020.jpeg",
+		"bonus": "RB",
+		"flag": "G2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_021.jpeg",
+		"bonus": "RB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_022.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_023.jpeg",
+		"bonus": "BB",
+		"flag": "A",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_024.jpeg",
+		"bonus": "BB",
+		"flag": "B3",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_025.jpeg",
+		"bonus": "RB",
+		"flag": "D1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_027.jpeg",
+		"bonus": "BB",
+		"flag": "A1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_028.jpeg",
+		"bonus": "RB",
+		"flag": "B3",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_029.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_030.jpeg",
+		"bonus": "BB",
+		"flag": "A",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_032.jpeg",
+		"bonus": "BB",
+		"flag": "D1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_033.jpeg",
+		"bonus": "RB",
+		"flag": "C2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_035.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_037.jpeg",
+		"bonus": "BB",
+		"flag": "T1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_038.jpeg",
+		"bonus": "BB",
+		"flag": "E1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_039.jpeg",
+		"bonus": "BB",
+		"flag": "E",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_041.jpeg",
+		"bonus": "RB",
+		"flag": "A",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_042.jpeg",
+		"bonus": "BB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_044.jpeg",
+		"bonus": "BB",
+		"flag": "G1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_045.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_047.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_049.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_052.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_053.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_054.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_055.jpeg",
+		"bonus": "BB",
+		"flag": "G1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_058.jpeg",
+		"bonus": "BB",
+		"flag": "B2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_060.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_061.jpeg",
+		"bonus": "BB",
+		"flag": "B1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_062.jpeg",
+		"bonus": "BB",
+		"flag": "E2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_064.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_065.jpeg",
+		"bonus": "BB",
+		"flag": "G1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_068.jpeg",
+		"bonus": "RB",
+		"flag": "G2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_074.jpeg",
+		"bonus": "BB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_075.jpeg",
+		"bonus": "BB",
+		"flag": "C3",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_076.jpeg",
+		"bonus": "RB",
+		"flag": "G2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_077.jpeg",
+		"bonus": "BB",
+		"flag": "G2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_078.jpeg",
+		"bonus": "BB",
+		"flag": "G2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_079.jpeg",
+		"bonus": "BB",
+		"flag": "C1",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_080.jpeg",
+		"bonus": "RB",
+		"flag": "T2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_081.jpeg",
+		"bonus": "RB",
+		"flag": "D2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_082.jpeg",
+		"bonus": "BB",
+		"flag": "B2",
+		"album": "discup-ur"
+	},
+	{
+		"path": "discup-ur/20250724_083.jpeg",
+		"bonus": "BB",
+		"flag": "A1",
+		"album": "discup-ur"
 	}
 ]
