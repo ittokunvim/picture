@@ -6,9 +6,8 @@ const PictureTitle = "写真一覧";
 // Json attributes
 // {
 //  "path": "string",
-//  "bonus": "string"
-//  "flag": "string",
-//  "album": "string",
+//  "description": "string",
+//  "createdAt": "string",
 // }
 
 // JSONファイルを読み取り、データを出力する関数
@@ -33,16 +32,10 @@ async function createPictureList() {
 
 	myTitle.textContent = PictureTitle;
 
-	const hyperRushTitle = "ハイパーラッシュ";
-	const hyperRushData = jsonData.filter((data) => data.album === "hyper-rush");
-	const discupURTitle = "ディスクアップUR";
-	const discupURData = jsonData.filter((data) => data.album === "discup-ur");
-	const hyperRushAlbum = createAlbum(hyperRushTitle, hyperRushData);
-	const discupURAlbum = createAlbum(discupURTitle, discupURData);
+  const pictures = createAlbum(jsonData)
 
 	picture.appendChild(myTitle);
-	picture.appendChild(hyperRushAlbum);
-	picture.appendChild(discupURAlbum);
+	picture.appendChild(pictures);
 }
 
 // 画像のアルバムを生成する関数
@@ -52,47 +45,54 @@ async function createPictureList() {
 //       <div class="image">
 //         <img />
 //       </div>
-//       <div class="bonus">...</div>
-//       <div class="flag">...</div>
+//       <div class="description">...</div>
+//       <div class="created_at">...</div>
 //     </div>
 //   </div>
 // </div>
-function createAlbum(title, data) {
+function createAlbum(data) {
 	const myArea = document.createElement("div");
-	const myTitle = document.createElement("h3");
 	const myList = document.createElement("div");
 
 	myArea.classList.add("area");
 	myList.classList.add("list");
-	myTitle.textContent = title;
 	data.forEach(async (data) => {
 		const myItem = document.createElement("div");
 		const myItemImgWrap = document.createElement("div");
 		const myItemImg = document.createElement("img");
-		const myItemBonus = document.createElement("div");
-		const myItemFlag = document.createElement("div");
+		const myItemDescription = document.createElement("div");
+		const myItemCreatedAt = document.createElement("div");
 
 		myItem.classList.add("item");
 		myItemImgWrap.classList.add("image");
-		myItemBonus.classList.add("bonus");
-		myItemFlag.classList.add("flag");
+		myItemDescription.classList.add("description");
+		myItemCreatedAt.classList.add("created_at");
 
 		myItemImg.src = data.path;
-		myItemBonus.textContent = "ボーナス: " + data.bonus;
-		myItemFlag.textContent = "フラグ: " + data.flag;
+		myItemDescription.textContent = data.description;
+		myItemCreatedAt.textContent = "作成日時：" + formatDate(data.createdAt);
 
 		myItemImgWrap.appendChild(myItemImg);
 		myItem.appendChild(myItemImgWrap);
-		myItem.appendChild(myItemBonus);
-		myItem.appendChild(myItemFlag);
+		myItem.appendChild(myItemDescription);
+		myItem.appendChild(myItemCreatedAt);
 
 		myList.appendChild(myItem);
 	});
 
-	myArea.appendChild(myTitle);
 	myArea.appendChild(myList);
 
 	return myArea;
 }
+
+function formatDate(createdAt) {
+  const date = new Date(createdAt);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${year}年${month}月${day}日`;
+}
+
+
 
 createPictureList();
