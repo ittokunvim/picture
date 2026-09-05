@@ -7,6 +7,8 @@
 	--color-background-secondary: #f5f5f5;
 
 	--color-border-primary: #d8d8d8;
+
+  --picture-image-size: 150px;
 }
 
 html {
@@ -51,14 +53,14 @@ hr {
 
 #picture .list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(var(--picture-image-size), 1fr));
 	gap: 0.5rem;
 }
 
 #picture .item {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	color: var(--color-text-secondary);
-	max-width: 128px;
+	max-width: var(--picture-image-size);
     margin: 0 auto;
 	border: 1px solid var(--color-border-primary);
 	border-radius: 0.5rem;
@@ -67,17 +69,19 @@ hr {
 /* #picture .image {} */
 
 #picture .image img {
-	width: 128px;
-	height: 128px;
+	width: var(--picture-image-size);
+	height: var(--picture-image-size);
 	border-top-left-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
+  object-fit: cover;
 }
 
-#picture .bonus {
+#picture .description {
 	margin-left: 0.5rem;
 }
 
-#picture .flag {
+#picture .created_at {
+  color: var(--color-text-secondary);
 	margin-left: 0.5rem;
 }
 

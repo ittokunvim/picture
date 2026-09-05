@@ -2,91 +2,90 @@
 
 # 画像のデータを格納したJSONファイルを作成する
 # REQUIRE: jq
-# Usage: ./json.sh ALBUM READDIR WRITEFILE
+# Usage: ./json.sh READDIR WRITEFILE
+# JSON structure
+# [
+#   {
+#     "path": "",
+#     "description": "",
+#     "createdAt": ""
+#   }
+# ]
 
-readonly ALBUM=$1
-readonly READDIR=$2
-readonly WRITEFILE=$3
+set -euo pipefail
 
+readonly READDIR=$1
+readonly WRITEFILE=$2
 
-# もし引数が渡されていなければ終了
-if [[ (-z ${ALBUM} || -z ${READDIR}) || -z ${WRITEFILE} ]]; then
-	echo "Usage: ./json.sh ALBUM READDIR WRITEFILE"
-	exit
-fi
-
-# もしアルバムの引数がなければ終了
-if [[ ("${ALBUM}" != "hyper-rush" && "${ALBUM}" != "discup-ur") ]]; then
-	echo "Wrong kind: ${ALBUM}"
-	exit
-fi
-
-# もし引数の読み取り用のディレクトリがなければ終了
-if [ ! -d ${READDIR} ]; then
-	echo "${READDIR} directory is not exist"
-	exit
-fi
-
-# 引数の読み取り用ディレクトリ下の画像ファイルを格納
-readonly imagefiles=$(ls "${READDIR}" | grep -E 'jpeg|jpg|JPG|png')
-
-# 引数の読み取り用ディレクトリ下に画像ファイルがなければ終了
-readonly firstfiles=($imagefiles)
-if [ -z ${firstfiles[0]} ]; then
-	echo "No image files to the under ${READDIR} directory"
-	exit
-fi
-
-# JSONファイルに追加する要素の文字列を定義
-json="["
-
-function set_hyperrush_json() {
-	for img in ${imagefiles[@]}; do
-		# 読み取る画像ファイルのパスを定義
-		readfile=${READDIR}/${img}
-		# JSONを定義
-		data="{\"path\":\"${readfile}\",\"bonus\":\"HB\",\"flag\":\"E\",\"album\":\"hyper-rush\"},"
-		# JSONに値を追加
-		json="${json}${data}"
-	done
-	# JSONの最後の要素のコンマを削除し、鉤括弧を閉める
-	json="${json/%?/}]";
+# jqコマンドがインストールされているかチェック
+command -v jq >/dev/null || {
+  echo "jq is required" >&2
+  exit 1
 }
 
-function set_discupur_json() {
-	for img in ${imagefiles[@]}; do
-		# 読み取る画像ファイルのパスを定義
-		readfile=${READDIR}/${img}
-		# JSONを定義
-		data="{\"path\":\"${readfile}\",\"bonus\":\"BB\",\"flag\":\"\",\"album\":\"discup-ur\"},"
-		# JSONに値を追加
-		json="${json}${data}"
-	done
-	# JSONの最後の要素のコンマを削除し、鉤括弧を閉める
-	json="${json/%?/}]";
-}
-
-case "${ALBUM}" in
-	'hyper-rush')
-		set_hyperrush_json
-		;;
-	'discup-ur')
-		set_discupur_json
-		;;
-	*)
-		echo "${ALBUM} is not found"
-		exit
-		;;
-esac
-
-# jq '. += [{"path":"","bonus":"BB","flag":"","album":"discup-ur"}]' data.json > tmp.json && mv tmp.json data.json
-
-# もし引数のJSONがファイルでなければ終了
-if [ ! -f ${WRITEFILE} ]; then
-	echo "${WRITEFILE} is not file"
-	exit
+# 引数チェック
+if [[ -z "${READDIR}" || -z "${WRITEFILE}" ]]; then
+  echo "Usage: ./json.sh READDIR WRITEFILE" >&2
+  exit 1
 fi
 
-jq --argjson add "${json}" '. += [$add]' ${WRITEFILE} > tmp.json
-mv tmp.json ${WRITEFILE}
+# ディレクトリの存在確認
+if [[ ! -d "${READDIR}" ]]; then
+  echo "Error: ${READDIR} directory does not exist" >&2
+  exit 1
+fi
+
+# ファイルの存在確認
+if [[ ! -f "${WRITEFILE}" ]]; then
+  echo "Error: ${WRITEFILE} is not a file" >&2
+  exit 1
+fi
+
+# 画像ファイルを配列で取得（nullglob対応）
+shopt -s nullglob
+imagefiles=("${READDIR}"/*.{jpeg,jpg,JPG,png})
+shopt -u nullglob
+
+# 画像ファイルが存在しない場合
+if [[ ${#imagefiles[@]} -eq 0 ]]; then
+  echo "Error: No image files found in ${READDIR} directory" >&2
+  exit 1
+fi
+
+# JSONデータを作成
+json_data="["
+
+for f in "${imagefiles[@]}"; do
+  # ファイル名から日付を取得
+  filename=$(basename "$f")
+  date_part="${filename:0:8}"
+  
+  # YYYYMMDD形式を確認（オプション）
+  if [[ ! ${date_part} =~ ^[0-9]{8}$ ]]; then
+    echo "Warning: ${filename} does not match YYYYMMDD format" >&2
+    continue
+  fi
+  
+  # YYYY-MM-DD形式に変換
+  formatted_date="${date_part:0:4}-${date_part:4:2}-${date_part:6:2}"
+  
+  # JSON要素を追加
+  json_data+="{\"path\":\"${f}\",\"description\":\"\",\"createdAt\":\"${formatted_date}\"},"
+done
+
+# 末尾のカンマを削除
+json_data="${json_data%,}]"
+
+# jqでJSONファイルに追加
+if ! jq --argjson items "$(jq -n "${json_data}" | jq -c '.[]')" \
+    '.[] | . as $item | empty' "${WRITEFILE}" 2>/dev/null; then
+  # パイプで複数の要素を追加
+  jq ". += ${json_data}" "${WRITEFILE}" > tmp.json || {
+    echo "Error: Failed to update JSON file" >&2
+    exit 1
+  }
+  mv tmp.json "${WRITEFILE}"
+else
+  echo "Successfully updated ${WRITEFILE}" >&2
+fi
 

@@ -1,101 +1,84 @@
 #!/bin/bash
 
 # 画像を整形・最適化を行うスクリプト
-# REQUIRE: magick
-# Usage: ./optimize.sh [kind] READDIR WRITEDIR
+# REQUIRE: ImageMagick (magick)
+# Usage: ./optimize.sh READDIR WRITEDIR
 
-readonly KIND=$1
-readonly READDIR=$2
-readonly WRITEDIR=$3
+set -euo pipefail
 
-# 今日の日付をyyyymmddの形式で格納
-readonly TODAY=$(date +"%Y%m%d")
+readonly READDIR=$1
+readonly WRITEDIR=$2
 
-# もし引数が渡されていなければ終了
-if [[ (-z ${KIND} || -z ${READDIR} || -z ${WRITEDIR}) ]]; then
-	echo "Usage: ./optimize.sh [hyper-rush|discup-ur] READDIR WRITEDIR"
-	exit
-fi
-
-# もし引数の最適化の種類がなければ終了
-if [[ ("${KIND}" != "hyper-rush" && "${KIND}" != "discup-ur") ]]; then
-	echo "Wrong optimize kind: ${KIND}"
-	exit
-fi
-
-# もし引数の読み取り用のディレクトリがなければ終了
-if [ ! -d ${READDIR} ]; then
-	echo "${READDIR} directory is not exist"
-	exit
-fi
-
-# 引数の読み取り用ディレクトリ下の画像ファイルを格納
-readonly imagefiles=$(ls "${READDIR}" | grep -E 'jpeg|jpg|JPG|png')
-
-# 引数の読み取り用ディレクトリ下に画像ファイルがなければ終了
-readonly firstfiles=($imagefiles)
-if [ -z ${firstfiles[0]} ]; then
-	echo "No image files to the under ${READDIR} directory"
-	exit
-fi
-
-# 引数で指定した書き取り用のディレクトリがなければ新規作成
-if [ ! -d ${WRITEDIR} ]; then
-	echo "create ${WRITEDIR} directory"
-	mkdir ${WRITEDIR}
-fi
-
-# ハイパーラッシュの画像最適化を行う関数
-function optimize_hyperrush() {
-	echo "Optimize hyper-rush"
-
-	local count=0
-	for img in ${imagefiles[@]}; do
-		# 読み取る音声ファイルのパスを定義
-		readfile=${READDIR}/${img}
-		# カウンターを乗算
-		count=$((count + 1))
-		# 新しく作成する音声ファイル名を定義
-		filename="${WRITEDIR}/${TODAY}_$(printf "%03d" $count).jpeg"
-		# 最適化を実行
-		echo "Optimize ${readfile} to ${filename}"
-		magick ${readfile} -crop 3024x3024+1008+0 ${filename}
-		magick ${filename} -resize 512x512 ${filename}
-		magick ${filename} -quality 90 ${filename}
-	done
+# ImageMagick がインストールされているかチェック
+command -v magick >/dev/null || {
+  echo "Error: ImageMagick (magick) is required" >&2
+  exit 1
 }
 
-# ディスクアップURの画像最適化を行う関数
-function optimize_discupur() {
-	echo "Optimize discup-ur"
+# 引数チェック
+if [[ -z "${READDIR}" || -z "${WRITEDIR}" ]]; then
+  echo "Usage: ./optimize.sh READDIR WRITEDIR" >&2
+  exit 1
+fi
 
-	local count=0
-	for img in ${imagefiles[@]}; do
-		# 読み取る音声ファイルのパスを定義
-		readfile=${READDIR}/${img}
-		# カウンターを乗算
-		count=$((count + 1))
-		# 新しく作成する音声ファイル名を定義
-		filename="${WRITEDIR}/${TODAY}_$(printf "%03d" $count).jpeg"
-		# 最適化を実行
-		echo "Optimize ${readfile} to ${filename}"
-		magick ${readfile} -crop 3024x3024+0+512 ${filename}
-		magick ${filename} -resize 512x512 ${filename}
-		magick ${filename} -quality 80 ${filename}
- 	done
-}
+# ディレクトリの存在確認
+if [[ ! -d "${READDIR}" ]]; then
+  echo "Error: ${READDIR} directory does not exist" >&2
+  exit 1
+fi
 
-# 画像の最適化を行う
-case "${KIND}" in
-	'hyper-rush')
-		optimize_hyperrush
-		;;
-	'discup-ur')
-		optimize_discupur
-		;;
-	*)
-		echo "Not found optimization"
-		exit
-		;;
-esac
+# 書き込み用ディレクトリの作成
+if [[ ! -d "${WRITEDIR}" ]]; then
+  echo "Creating ${WRITEDIR} directory..."
+  mkdir -p "${WRITEDIR}" || {
+    echo "Error: Failed to create ${WRITEDIR} directory" >&2
+    exit 1
+  }
+fi
 
+# 画像ファイルを配列で取得（nullglob対応）
+shopt -s nullglob
+imagefiles=("${READDIR}"/*.{jpeg,jpg,JPEG,JPG,png,PNG})
+shopt -u nullglob
+
+# 画像ファイルが存在しない場合
+if [[ ${#imagefiles[@]} -eq 0 ]]; then
+  echo "Error: No image files found in ${READDIR} directory" >&2
+  exit 1
+fi
+
+# ファイルを処理
+success_count=0
+error_count=0
+
+for readfile in "${imagefiles[@]}"; do
+  # ファイル名を取得（パスを削除）
+  filename=$(basename "$readfile")
+  # 拡張子を取得
+  extension="${filename##*.}"
+  # ベース名（拡張子なし）を取得
+  basename="${filename%.*}"
+  
+  writefile="${WRITEDIR}/${basename}.${extension}"
+  
+  # 最適化を実行
+  echo "Optimizing: ${readfile} → ${writefile}"
+  
+  if magick "${readfile}" \
+      -resize 1000x \
+      -quality 90 \
+      "${writefile}"; then
+    echo "  ✓ Success"
+    ((success_count++))
+  else
+    echo "  ✗ Failed" >&2
+    ((error_count++))
+  fi
+done
+
+echo ""
+echo "Completed: ${success_count} succeeded, ${error_count} failed"
+
+if [[ ${error_count} -gt 0 ]]; then
+  exit 1
+fi
