@@ -43,11 +43,11 @@ fi
 
 # 画像ファイルを配列で取得（nullglob対応）
 shopt -s nullglob
-imagefiles=("${READDIR}"/*.{jpeg,JPEG,jpg,JPG,png,PNG})
+image_files=("${READDIR}"/*.{jpeg,JPEG,jpg,JPG,png,PNG})
 shopt -u nullglob
 
 # 画像ファイルが存在しない場合
-if [[ ${#imagefiles[@]} -eq 0 ]]; then
+if [[ ${#image_files[@]} -eq 0 ]]; then
   echo "Error: No image files found in ${READDIR} directory" >&2
   exit 1
 fi
@@ -58,22 +58,22 @@ trap 'rm -f "${tmpfile}"' EXIT
 # JSONデータを作成
 json_data='[]'
 valid_count=0
-for f in "${imagefiles[@]}"; do
+for image_file in "${image_files[@]}"; do
   # ファイル名から日付を取得
-  filename=$(basename "$f")
+  filename=$(basename "$image_file")
   date_part="${filename:0:8}"
-  
+
   # YYYYMMDD形式を確認（オプション）
   if [[ ! ${date_part} =~ ^[0-9]{8}$ ]]; then
     echo "Warning: ${filename} does not match YYYYMMDD format" >&2
     continue
   fi
-  
+
   # YYYY-MM-DD形式に変換
   formatted_date="${date_part:0:4}-${date_part:4:2}-${date_part:6:2}"
-  
+
   json_data=$(jq \
-    --arg path "${f}" \
+    --arg path "${image_file}" \
     --arg created_at "${formatted_date}" \
     '. + [{path: $path, description: "", createdAt: $created_at}]' \
     <<<"${json_data}")

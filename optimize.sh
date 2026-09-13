@@ -38,11 +38,11 @@ fi
 
 # 画像ファイルを配列で取得（nullglob対応）
 shopt -s nullglob
-imagefiles=("${READDIR}"/*.{jpeg,jpg,JPEG,JPG,png,PNG})
+image_files=("${READDIR}"/*.{jpeg,jpg,JPEG,JPG,png,PNG})
 shopt -u nullglob
 
 # 画像ファイルが存在しない場合
-if [[ ${#imagefiles[@]} -eq 0 ]]; then
+if [[ ${#image_files[@]} -eq 0 ]]; then
   echo "Error: No image files found in ${READDIR} directory" >&2
   exit 1
 fi
@@ -51,23 +51,23 @@ fi
 success_count=0
 error_count=0
 
-for readfile in "${imagefiles[@]}"; do
+for read_file in "${image_files[@]}"; do
   # ファイル名を取得（パスを削除）
-  filename=$(basename "$readfile")
+  filename=$(basename "$read_file")
   # 拡張子を取得
   extension="${filename##*.}"
   # ベース名（拡張子なし）を取得
   base_name="${filename%.*}"
-  
-  writefile="${WRITEDIR}/${base_name}.${extension}"
-  
+
+  write_file="${WRITEDIR}/${base_name}.${extension}"
+
   # 最適化を実行
-  echo "Optimizing: ${readfile} → ${writefile}"
-  
-  if magick "${readfile}" \
+  echo "Optimizing: ${read_file} → ${write_file}"
+
+  if magick "${read_file}" \
       -resize 1000x \
       -quality 90 \
-      "${writefile}"; then
+      "${write_file}"; then
     echo "  ✓ Success"
     ((success_count += 1))
   else

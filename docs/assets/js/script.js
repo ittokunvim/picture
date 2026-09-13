@@ -7,7 +7,7 @@ const imageModalClose = imageModal.querySelector(".image-modal-close");
 const jsonPath = "./data.json";
 const pictureTitle = "写真一覧";
 
-// Json attributes
+// JSON attributes
 // {
 //  "path": "string",
 //  "description": "string",
@@ -29,9 +29,9 @@ async function fetchJson() {
 //   ...
 // </div>
 async function createPictureList() {
-	const myTitle = document.createElement("h2");
-	myTitle.textContent = pictureTitle;
-	picture.appendChild(myTitle);
+	const titleElement = document.createElement("h2");
+	titleElement.textContent = pictureTitle;
+	picture.appendChild(titleElement);
 
 	try {
 		const jsonData = await fetchJson();
@@ -52,46 +52,47 @@ async function createPictureList() {
 //         <img />
 //       </div>
 //       <div class="description">...</div>
-//       <div class="created_at">...</div>
+//   <div class="created-at">...</div>
 //     </div>
 //   </div>
 // </div>
-function createAlbum(data) {
-	const myArea = document.createElement("div");
-	const myList = document.createElement("div");
+function createAlbum(pictures) {
+	const areaElement = document.createElement("div");
+	const listElement = document.createElement("div");
 
-	myArea.classList.add("area");
-	myList.classList.add("list");
-	data.forEach((data) => {
-		const myItem = document.createElement("div");
-		const myItemImgWrap = document.createElement("button");
-		const myItemImg = document.createElement("img");
-		const myItemDescription = document.createElement("div");
-		const myItemCreatedAt = document.createElement("div");
+	areaElement.classList.add("area");
+	listElement.classList.add("list");
+	pictures.forEach((picture) => {
+		const itemElement = document.createElement("div");
+		const imageButton = document.createElement("button");
+		const imageElement = document.createElement("img");
+		const descriptionElement = document.createElement("div");
+		const createdAtElement = document.createElement("div");
 
-		myItem.classList.add("item");
-		myItemImgWrap.classList.add("image");
-		myItemImgWrap.classList.add("image-button");
-		myItemDescription.classList.add("description");
-		myItemCreatedAt.classList.add("created_at");
+		itemElement.classList.add("item");
+		imageButton.classList.add("image");
+		imageButton.classList.add("image-button");
+		descriptionElement.classList.add("description");
+		createdAtElement.classList.add("created-at");
 
-		myItemImg.src = data.path;
-		myItemImg.alt = data.description;
-		myItemDescription.textContent = data.description;
-		myItemCreatedAt.textContent = "作成日時：" + formatDate(data.createdAt);
+		imageElement.src = picture.path;
+		imageElement.alt = picture.description;
+		descriptionElement.textContent = picture.description;
+		createdAtElement.textContent =
+			"作成日時：" + formatDate(picture.createdAt);
 
-		myItemImgWrap.appendChild(myItemImg);
-		myItemImgWrap.addEventListener("click", () => openImageModal(data));
-		myItem.appendChild(myItemImgWrap);
-		myItem.appendChild(myItemDescription);
-		myItem.appendChild(myItemCreatedAt);
+		imageButton.appendChild(imageElement);
+		imageButton.addEventListener("click", () => openImageModal(picture));
+		itemElement.appendChild(imageButton);
+		itemElement.appendChild(descriptionElement);
+		itemElement.appendChild(createdAtElement);
 
-		myList.appendChild(myItem);
+		listElement.appendChild(itemElement);
 	});
 
-	myArea.appendChild(myList);
+	areaElement.appendChild(listElement);
 
-	return myArea;
+	return areaElement;
 }
 
 function openImageModal(data) {
@@ -122,7 +123,5 @@ function formatDate(createdAt) {
 	const [year, month, day] = createdAt.split("-");
 	return `${year}年${Number(month)}月${Number(day)}日`;
 }
-
-
 
 createPictureList();

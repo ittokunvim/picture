@@ -8,7 +8,7 @@
 
 	--color-border-primary: #d8d8d8;
 
-  --picture-image-size: 150px;
+	--picture-image-size: 150px;
 }
 
 html {
@@ -73,7 +73,7 @@ hr {
 	height: var(--picture-image-size);
 	border-top-left-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
-  object-fit: cover;
+	object-fit: cover;
 	cursor: zoom-in;
 }
 
@@ -92,8 +92,8 @@ hr {
 	margin-left: 0.5rem;
 }
 
-#picture .created_at {
-  color: var(--color-text-secondary);
+#picture .created-at {
+	color: var(--color-text-secondary);
 	margin-left: 0.5rem;
 }
 
