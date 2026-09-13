@@ -4,10 +4,10 @@ const imageModalImage = imageModal.querySelector(".image-modal-image");
 const imageModalCaption = imageModal.querySelector(".image-modal-caption");
 const imageModalClose = imageModal.querySelector(".image-modal-close");
 
-const JsonPath = "./data.json";
-const PictureTitle = "写真一覧";
+const jsonPath = "./data.json";
+const pictureTitle = "写真一覧";
 
-// Json attributes
+// JSON attributes
 // {
 //  "path": "string",
 //  "description": "string",
@@ -16,13 +16,11 @@ const PictureTitle = "写真一覧";
 
 // JSONファイルを読み取り、データを出力する関数
 async function fetchJson() {
-	try {
-		const response = await fetch(JsonPath, { cache: "no-store" });
-		const data = await response.json();
-		return data;
-	} catch (error) {
-		console.error(error);
+	const response = await fetch(jsonPath, { cache: "no-store" });
+	if (!response.ok) {
+		throw new Error(`写真データの取得に失敗しました (${response.status})`);
 	}
+	return response.json();
 }
 
 // 写真のリストを生成する関数
@@ -31,15 +29,19 @@ async function fetchJson() {
 //   ...
 // </div>
 async function createPictureList() {
-	const jsonData = await fetchJson();
-	const myTitle = document.createElement("h2");
+	const titleElement = document.createElement("h2");
+	titleElement.textContent = pictureTitle;
+	picture.appendChild(titleElement);
 
-	myTitle.textContent = PictureTitle;
-
-  const pictures = createAlbum(jsonData)
-
-	picture.appendChild(myTitle);
-	picture.appendChild(pictures);
+	try {
+		const jsonData = await fetchJson();
+		picture.appendChild(createAlbum(jsonData));
+	} catch (error) {
+		console.error(error);
+		const errorMessage = document.createElement("p");
+		errorMessage.textContent = "写真を読み込めませんでした。";
+		picture.appendChild(errorMessage);
+	}
 }
 
 // 画像のアルバムを生成する関数
@@ -50,46 +52,47 @@ async function createPictureList() {
 //         <img />
 //       </div>
 //       <div class="description">...</div>
-//       <div class="created_at">...</div>
+//   <div class="created-at">...</div>
 //     </div>
 //   </div>
 // </div>
-function createAlbum(data) {
-	const myArea = document.createElement("div");
-	const myList = document.createElement("div");
+function createAlbum(pictures) {
+	const areaElement = document.createElement("div");
+	const listElement = document.createElement("div");
 
-	myArea.classList.add("area");
-	myList.classList.add("list");
-	data.forEach(async (data) => {
-		const myItem = document.createElement("div");
-		const myItemImgWrap = document.createElement("button");
-		const myItemImg = document.createElement("img");
-		const myItemDescription = document.createElement("div");
-		const myItemCreatedAt = document.createElement("div");
+	areaElement.classList.add("area");
+	listElement.classList.add("list");
+	pictures.forEach((picture) => {
+		const itemElement = document.createElement("div");
+		const imageButton = document.createElement("button");
+		const imageElement = document.createElement("img");
+		const descriptionElement = document.createElement("div");
+		const createdAtElement = document.createElement("div");
 
-		myItem.classList.add("item");
-		myItemImgWrap.classList.add("image");
-		myItemImgWrap.classList.add("image-button");
-		myItemDescription.classList.add("description");
-		myItemCreatedAt.classList.add("created_at");
+		itemElement.classList.add("item");
+		imageButton.classList.add("image");
+		imageButton.classList.add("image-button");
+		descriptionElement.classList.add("description");
+		createdAtElement.classList.add("created-at");
 
-		myItemImg.src = data.path;
-		myItemImg.alt = data.description;
-		myItemDescription.textContent = data.description;
-		myItemCreatedAt.textContent = "作成日時：" + formatDate(data.createdAt);
+		imageElement.src = picture.path;
+		imageElement.alt = picture.description;
+		descriptionElement.textContent = picture.description;
+		createdAtElement.textContent =
+			"作成日時：" + formatDate(picture.createdAt);
 
-		myItemImgWrap.appendChild(myItemImg);
-		myItemImgWrap.addEventListener("click", () => openImageModal(data));
-		myItem.appendChild(myItemImgWrap);
-		myItem.appendChild(myItemDescription);
-		myItem.appendChild(myItemCreatedAt);
+		imageButton.appendChild(imageElement);
+		imageButton.addEventListener("click", () => openImageModal(picture));
+		itemElement.appendChild(imageButton);
+		itemElement.appendChild(descriptionElement);
+		itemElement.appendChild(createdAtElement);
 
-		myList.appendChild(myItem);
+		listElement.appendChild(itemElement);
 	});
 
-	myArea.appendChild(myList);
+	areaElement.appendChild(listElement);
 
-	return myArea;
+	return areaElement;
 }
 
 function openImageModal(data) {
@@ -117,13 +120,8 @@ imageModal.addEventListener("click", (event) => {
 });
 
 function formatDate(createdAt) {
-  const date = new Date(createdAt);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${year}年${month}月${day}日`;
+	const [year, month, day] = createdAt.split("-");
+	return `${year}年${Number(month)}月${Number(day)}日`;
 }
-
-
 
 createPictureList();

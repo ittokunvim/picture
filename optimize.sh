@@ -6,6 +6,12 @@
 
 set -euo pipefail
 
+# 引数チェック
+if [[ $# -ne 2 ]]; then
+  echo "Usage: ./optimize.sh READDIR WRITEDIR" >&2
+  exit 1
+fi
+
 readonly READDIR=$1
 readonly WRITEDIR=$2
 
@@ -14,12 +20,6 @@ command -v magick >/dev/null || {
   echo "Error: ImageMagick (magick) is required" >&2
   exit 1
 }
-
-# 引数チェック
-if [[ -z "${READDIR}" || -z "${WRITEDIR}" ]]; then
-  echo "Usage: ./optimize.sh READDIR WRITEDIR" >&2
-  exit 1
-fi
 
 # ディレクトリの存在確認
 if [[ ! -d "${READDIR}" ]]; then
@@ -38,11 +38,11 @@ fi
 
 # 画像ファイルを配列で取得（nullglob対応）
 shopt -s nullglob
-imagefiles=("${READDIR}"/*.{jpeg,jpg,JPEG,JPG,png,PNG})
+image_files=("${READDIR}"/*.{jpeg,jpg,JPEG,JPG,png,PNG})
 shopt -u nullglob
 
 # 画像ファイルが存在しない場合
-if [[ ${#imagefiles[@]} -eq 0 ]]; then
+if [[ ${#image_files[@]} -eq 0 ]]; then
   echo "Error: No image files found in ${READDIR} directory" >&2
   exit 1
 fi
@@ -51,28 +51,28 @@ fi
 success_count=0
 error_count=0
 
-for readfile in "${imagefiles[@]}"; do
+for read_file in "${image_files[@]}"; do
   # ファイル名を取得（パスを削除）
-  filename=$(basename "$readfile")
+  filename=$(basename "$read_file")
   # 拡張子を取得
   extension="${filename##*.}"
   # ベース名（拡張子なし）を取得
-  basename="${filename%.*}"
-  
-  writefile="${WRITEDIR}/${basename}.${extension}"
-  
+  base_name="${filename%.*}"
+
+  write_file="${WRITEDIR}/${base_name}.${extension}"
+
   # 最適化を実行
-  echo "Optimizing: ${readfile} → ${writefile}"
-  
-  if magick "${readfile}" \
+  echo "Optimizing: ${read_file} → ${write_file}"
+
+  if magick "${read_file}" \
       -resize 1000x \
       -quality 90 \
-      "${writefile}"; then
+      "${write_file}"; then
     echo "  ✓ Success"
-    ((success_count++))
+    ((success_count += 1))
   else
     echo "  ✗ Failed" >&2
-    ((error_count++))
+    ((error_count += 1))
   fi
 done
 
