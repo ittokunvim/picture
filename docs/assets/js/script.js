@@ -4,8 +4,8 @@ const imageModalImage = imageModal.querySelector(".image-modal-image");
 const imageModalCaption = imageModal.querySelector(".image-modal-caption");
 const imageModalClose = imageModal.querySelector(".image-modal-close");
 
-const JsonPath = "./data.json";
-const PictureTitle = "写真一覧";
+const jsonPath = "./data.json";
+const pictureTitle = "写真一覧";
 
 // Json attributes
 // {
@@ -16,13 +16,11 @@ const PictureTitle = "写真一覧";
 
 // JSONファイルを読み取り、データを出力する関数
 async function fetchJson() {
-	try {
-		const response = await fetch(JsonPath, { cache: "no-store" });
-		const data = await response.json();
-		return data;
-	} catch (error) {
-		console.error(error);
+	const response = await fetch(jsonPath, { cache: "no-store" });
+	if (!response.ok) {
+		throw new Error(`写真データの取得に失敗しました (${response.status})`);
 	}
+	return response.json();
 }
 
 // 写真のリストを生成する関数
@@ -31,15 +29,19 @@ async function fetchJson() {
 //   ...
 // </div>
 async function createPictureList() {
-	const jsonData = await fetchJson();
 	const myTitle = document.createElement("h2");
-
-	myTitle.textContent = PictureTitle;
-
-  const pictures = createAlbum(jsonData)
-
+	myTitle.textContent = pictureTitle;
 	picture.appendChild(myTitle);
-	picture.appendChild(pictures);
+
+	try {
+		const jsonData = await fetchJson();
+		picture.appendChild(createAlbum(jsonData));
+	} catch (error) {
+		console.error(error);
+		const errorMessage = document.createElement("p");
+		errorMessage.textContent = "写真を読み込めませんでした。";
+		picture.appendChild(errorMessage);
+	}
 }
 
 // 画像のアルバムを生成する関数
@@ -60,7 +62,7 @@ function createAlbum(data) {
 
 	myArea.classList.add("area");
 	myList.classList.add("list");
-	data.forEach(async (data) => {
+	data.forEach((data) => {
 		const myItem = document.createElement("div");
 		const myItemImgWrap = document.createElement("button");
 		const myItemImg = document.createElement("img");
@@ -117,11 +119,8 @@ imageModal.addEventListener("click", (event) => {
 });
 
 function formatDate(createdAt) {
-  const date = new Date(createdAt);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${year}年${month}月${day}日`;
+	const [year, month, day] = createdAt.split("-");
+	return `${year}年${Number(month)}月${Number(day)}日`;
 }
 
 

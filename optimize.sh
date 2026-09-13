@@ -6,6 +6,12 @@
 
 set -euo pipefail
 
+# 引数チェック
+if [[ $# -ne 2 ]]; then
+  echo "Usage: ./optimize.sh READDIR WRITEDIR" >&2
+  exit 1
+fi
+
 readonly READDIR=$1
 readonly WRITEDIR=$2
 
@@ -14,12 +20,6 @@ command -v magick >/dev/null || {
   echo "Error: ImageMagick (magick) is required" >&2
   exit 1
 }
-
-# 引数チェック
-if [[ -z "${READDIR}" || -z "${WRITEDIR}" ]]; then
-  echo "Usage: ./optimize.sh READDIR WRITEDIR" >&2
-  exit 1
-fi
 
 # ディレクトリの存在確認
 if [[ ! -d "${READDIR}" ]]; then
@@ -57,9 +57,9 @@ for readfile in "${imagefiles[@]}"; do
   # 拡張子を取得
   extension="${filename##*.}"
   # ベース名（拡張子なし）を取得
-  basename="${filename%.*}"
+  base_name="${filename%.*}"
   
-  writefile="${WRITEDIR}/${basename}.${extension}"
+  writefile="${WRITEDIR}/${base_name}.${extension}"
   
   # 最適化を実行
   echo "Optimizing: ${readfile} → ${writefile}"
@@ -69,10 +69,10 @@ for readfile in "${imagefiles[@]}"; do
       -quality 90 \
       "${writefile}"; then
     echo "  ✓ Success"
-    ((success_count++))
+    ((success_count += 1))
   else
     echo "  ✗ Failed" >&2
-    ((error_count++))
+    ((error_count += 1))
   fi
 done
 
