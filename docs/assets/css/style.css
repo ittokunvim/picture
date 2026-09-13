@@ -74,6 +74,18 @@ hr {
 	border-top-left-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
   object-fit: cover;
+	cursor: zoom-in;
+}
+
+#picture .image-button {
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: none;
+	border-radius: 0.5rem 0.5rem 0 0;
+	background: none;
+	color: inherit;
+	text-align: inherit;
 }
 
 #picture .description {
@@ -91,4 +103,61 @@ hr {
 	color: var(--color-text-secondary);
 	margin-top: 2rem;
 	border-top: 1px solid var(--color-border-primary);
+}
+
+.image-modal {
+	width: min(90vw, 900px);
+	max-width: none;
+	padding: 0;
+	border: none;
+	border-radius: 0.5rem;
+	background: transparent;
+}
+
+.image-modal::backdrop {
+	background-color: rgb(0 0 0 / 75%);
+}
+
+.image-modal-content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: var(--color-background-primary);
+}
+
+.image-modal-image {
+	display: block;
+	max-width: 100%;
+	max-height: 80vh;
+	object-fit: contain;
+}
+
+.image-modal-caption {
+	margin: 0.75rem 0 0;
+	color: var(--color-text-primary);
+	text-align: center;
+}
+
+.image-modal-close {
+	align-self: flex-end;
+	margin-bottom: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	border: 1px solid var(--color-border-primary);
+	border-radius: 0.25rem;
+	background-color: var(--color-background-primary);
+	color: var(--color-text-primary);
+	cursor: pointer;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
 }

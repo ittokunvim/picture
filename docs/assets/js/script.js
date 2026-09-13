@@ -1,4 +1,8 @@
 const picture = document.getElementById("picture");
+const imageModal = document.getElementById("image-modal");
+const imageModalImage = imageModal.querySelector(".image-modal-image");
+const imageModalCaption = imageModal.querySelector(".image-modal-caption");
+const imageModalClose = imageModal.querySelector(".image-modal-close");
 
 const JsonPath = "./data.json";
 const PictureTitle = "写真一覧";
@@ -58,21 +62,24 @@ function createAlbum(data) {
 	myList.classList.add("list");
 	data.forEach(async (data) => {
 		const myItem = document.createElement("div");
-		const myItemImgWrap = document.createElement("div");
+		const myItemImgWrap = document.createElement("button");
 		const myItemImg = document.createElement("img");
 		const myItemDescription = document.createElement("div");
 		const myItemCreatedAt = document.createElement("div");
 
 		myItem.classList.add("item");
 		myItemImgWrap.classList.add("image");
+		myItemImgWrap.classList.add("image-button");
 		myItemDescription.classList.add("description");
 		myItemCreatedAt.classList.add("created_at");
 
 		myItemImg.src = data.path;
+		myItemImg.alt = data.description;
 		myItemDescription.textContent = data.description;
 		myItemCreatedAt.textContent = "作成日時：" + formatDate(data.createdAt);
 
 		myItemImgWrap.appendChild(myItemImg);
+		myItemImgWrap.addEventListener("click", () => openImageModal(data));
 		myItem.appendChild(myItemImgWrap);
 		myItem.appendChild(myItemDescription);
 		myItem.appendChild(myItemCreatedAt);
@@ -84,6 +91,30 @@ function createAlbum(data) {
 
 	return myArea;
 }
+
+function openImageModal(data) {
+	imageModalImage.src = data.path;
+	imageModalImage.alt = data.description;
+	imageModalCaption.textContent = data.description;
+	imageModal.showModal();
+}
+
+function closeImageModal() {
+	imageModal.close();
+}
+
+imageModal.addEventListener("close", () => {
+	imageModalImage.src = "";
+	imageModalImage.alt = "";
+	imageModalCaption.textContent = "";
+});
+
+imageModalClose.addEventListener("click", closeImageModal);
+imageModal.addEventListener("click", (event) => {
+	if (event.target === imageModal) {
+		closeImageModal();
+	}
+});
 
 function formatDate(createdAt) {
   const date = new Date(createdAt);
