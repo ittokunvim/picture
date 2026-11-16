@@ -14,12 +14,12 @@ let lastFocusedButton = null;
 // {
 //  "path": "string",
 //  "description": "string",
-//  "createdAt": "string",
+//  "createdAt": "string"
 // }
 
 // JSONファイルを読み取り、データを出力する関数
 async function fetchJson() {
-  const response = await fetch(jsonPath, { cache: "no-store" });
+  const response = await fetch(jsonPath, { cache: "no-cache" });
   if (!response.ok) {
     throw new Error(`写真データの取得に失敗しました (${response.status})`);
   }
@@ -39,7 +39,7 @@ async function createPictureList() {
   try {
     const jsonData = await fetchJson();
     validatePictures(jsonData);
-    picture.appendChild(createAlbum(jsonData));
+    picture.appendChild(createAlbum(sortPicturesByDateDesc(jsonData)));
   } catch (error) {
     console.error(error);
     const errorMessage = document.createElement("p");
@@ -52,11 +52,11 @@ async function createPictureList() {
 // <div class="area">
 //   <div class="list">
 //     <div class="item">
-//       <div class="image">
+//       <button class="image image-button">
 //         <img />
-//       </div>
+//       </button>
 //       <div class="description">...</div>
-//   <div class="created-at">...</div>
+//       <div class="created-at">...</div>
 //     </div>
 //   </div>
 // </div>
@@ -85,14 +85,14 @@ function createAlbum(pictures) {
     imageElement.decoding = "async";
     descriptionElement.textContent = picture.description;
     createdAtElement.textContent = "作成日時：" + formatDate(picture.createdAt);
-    imageButton.setAttribute(
-      "aria-label",
-      picture.description || `${formatDate(picture.createdAt)}の写真を拡大`,
-    );
+
+    const label =
+      picture.description || `${formatDate(picture.createdAt)}の写真`;
+    imageButton.setAttribute("aria-label", `${label}を拡大`);
 
     imageButton.appendChild(imageElement);
     imageButton.addEventListener("click", () =>
-      openImageModal(picture, imageButton),
+      openImageModal(picture, imageButton, label),
     );
     itemElement.appendChild(imageButton);
     itemElement.appendChild(descriptionElement);
@@ -106,10 +106,10 @@ function createAlbum(pictures) {
   return areaElement;
 }
 
-function openImageModal(data, button) {
+function openImageModal(data, button, label) {
   lastFocusedButton = button;
   imageModalImage.src = data.path;
-  imageModalImage.alt = data.description;
+  imageModalImage.alt = label;
   imageModalCaption.textContent = data.description;
   imageModal.showModal();
   imageModalClose.focus();
@@ -183,6 +183,14 @@ function isValidDate(value) {
     date.getUTCMonth() === month - 1 &&
     date.getUTCDate() === day
   );
+}
+
+// 写真を撮影日時の新しい順に並べたコピーを返す関数
+// 同じ日の写真はファイル名の新しい順にし、元の配列は変更しない
+function sortPicturesByDateDesc(pictures) {
+  return [...pictures].sort((a, b) => {
+    b.createdAt.localeCompare(a.createdAt) || b.path.localeCompare(a.path);
+  });
 }
 
 function formatDate(createdAt) {
