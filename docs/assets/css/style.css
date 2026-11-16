@@ -88,6 +88,12 @@ hr {
   text-align: inherit;
 }
 
+#picture .image-button:focus-visible,
+.image-modal-close:focus-visible {
+  outline: 3px solid var(--color-text-link);
+  outline-offset: 2px;
+}
+
 #picture .description {
   margin-left: 0.5rem;
 }

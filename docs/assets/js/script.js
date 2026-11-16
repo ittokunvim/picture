@@ -7,6 +7,9 @@ const imageModalClose = imageModal.querySelector(".image-modal-close");
 const jsonPath = "./data.json";
 const pictureTitle = "写真一覧";
 
+// モーダルを閉じた後にフォーカスを戻すため、開いたサムネイルを覚えておく
+let lastFocusedButton = null;
+
 // JSON attributes
 // {
 //  "path": "string",
@@ -79,9 +82,15 @@ function createAlbum(pictures) {
     imageElement.alt = picture.description;
     descriptionElement.textContent = picture.description;
     createdAtElement.textContent = "作成日時：" + formatDate(picture.createdAt);
+    imageButton.setAttribute(
+      "aria-label",
+      picture.description || `${formatDate(picture.createdAt)}の写真を拡大`,
+    );
 
     imageButton.appendChild(imageElement);
-    imageButton.addEventListener("click", () => openImageModal(picture));
+    imageButton.addEventListener("click", () =>
+      openImageModal(picture, imageButton),
+    );
     itemElement.appendChild(imageButton);
     itemElement.appendChild(descriptionElement);
     itemElement.appendChild(createdAtElement);
@@ -94,21 +103,29 @@ function createAlbum(pictures) {
   return areaElement;
 }
 
-function openImageModal(data) {
+function openImageModal(data, button) {
+  lastFocusedButton = button;
   imageModalImage.src = data.path;
   imageModalImage.alt = data.description;
   imageModalCaption.textContent = data.description;
   imageModal.showModal();
+  imageModalClose.fucus();
 }
 
 function closeImageModal() {
   imageModal.close();
 }
 
+// 閉じるボタン・ESCキー・背景のクリックのどれで閉じても呼ばれる
 imageModal.addEventListener("close", () => {
   imageModalImage.src = "";
   imageModalImage.alt = "";
   imageModalCaption.textContent = "";
+
+  if (lastFocusedButton?.isConnected) {
+    lastFocusedButton.focus();
+  }
+  lastFocusedButton = null;
 });
 
 imageModalClose.addEventListener("click", closeImageModal);
