@@ -38,7 +38,6 @@ async function createPictureList() {
 
   try {
     const jsonData = await fetchJson();
-    console.log(jsonData);
     validatePictures(jsonData);
     picture.appendChild(createAlbum(jsonData));
   } catch (error) {
@@ -82,6 +81,8 @@ function createAlbum(pictures) {
 
     imageElement.src = picture.path;
     imageElement.alt = picture.description;
+    imageElement.loading = "lazy";
+    imageElement.decoding = "async";
     descriptionElement.textContent = picture.description;
     createdAtElement.textContent = "作成日時：" + formatDate(picture.createdAt);
     imageButton.setAttribute(
@@ -175,10 +176,8 @@ function isValidDate(value) {
   }
 
   const [, year, month, day] = match.map(Number);
-  console.log(year, month, day);
   // 2026-02-30のような日付は Date が 3月2日に繰り上げるため、組み立て直して比べる
   const date = new Date(Date.UTC(year, month - 1, day));
-  console.log(date);
   return (
     date.getUTCFullYear() === year &&
     date.getUTCMonth() === month - 1 &&
