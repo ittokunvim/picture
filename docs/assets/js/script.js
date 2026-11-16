@@ -38,6 +38,8 @@ async function createPictureList() {
 
   try {
     const jsonData = await fetchJson();
+    console.log(jsonData);
+    validatePictures(jsonData);
     picture.appendChild(createAlbum(jsonData));
   } catch (error) {
     console.error(error);
@@ -109,7 +111,7 @@ function openImageModal(data, button) {
   imageModalImage.alt = data.description;
   imageModalCaption.textContent = data.description;
   imageModal.showModal();
-  imageModalClose.fucus();
+  imageModalClose.focus();
 }
 
 function closeImageModal() {
@@ -134,6 +136,55 @@ imageModal.addEventListener("click", (event) => {
     closeImageModal();
   }
 });
+
+// 写真データを検証する関数
+// 不正なデータがあれば一覧を作らずにエラー表示にするため、例外を投げる
+function validatePictures(pictures) {
+  if (!Array.isArray(pictures)) {
+    throw new Error("写真データが配列ではありません");
+  }
+
+  pictures.forEach((picture, index) => {
+    const label = `写真データ[${index}]`;
+
+    if (typeof picture !== "object" || picture === null) {
+      throw new Error(`${label} がオブジェクトではありません`);
+    }
+    if (typeof picture.path !== "string" || picture.path === "") {
+      throw new Error(`${label} の path が不正です`);
+    }
+    // json.js は説明文を "" で作るため、空文字は許可する
+    if (typeof picture.description !== "string") {
+      throw new Error(`${label} の description が不正です`);
+    }
+    if (!isValidDate(picture.createdAt)) {
+      throw new Error(`${label} の createdAt が不正です: ${picture.createdAt}`);
+    }
+  });
+}
+
+// YYYY-MM-DD 形式で、実在する日付か確かめる関数
+function isValidDate(value) {
+  if (typeof value !== "string") {
+    return false;
+  }
+
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    return false;
+  }
+
+  const [, year, month, day] = match.map(Number);
+  console.log(year, month, day);
+  // 2026-02-30のような日付は Date が 3月2日に繰り上げるため、組み立て直して比べる
+  const date = new Date(Date.UTC(year, month - 1, day));
+  console.log(date);
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+}
 
 function formatDate(createdAt) {
   const [year, month, day] = createdAt.split("-");
